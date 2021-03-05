@@ -9,7 +9,7 @@ def check_price():
     soup = BeautifulSoup(page.content, 'html.parser')
     title = soup.find(id="productTitle").get_text()
     price = soup.find(id="priceblock_ourprice").get_text()
-    converted_price = float(price[0:5])
+    converted_price = float(price[0:3])
     if(converted_price < 230):
         send_mail()
 
@@ -26,7 +26,7 @@ def send_mail():
     server.starttls()
     server.ehlo()
 
-    server.login('zainul2002ca@gmail.com','vmpwdodunapjmpju')
+    server.login('zainul2002ca@gmail.com','***')
     subject = 'The price has decreased!!'
     body = 'Go and check back on: https://www.amazon.ca/Echo-Studio/dp/B07NQDP34D/ref=sr_1_4?dchild=1&keywords=alexa&qid=1614922275&sr=8-4'
     msg= f"Subject: {subject}\n\n{body}"
